@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Umut Studio | PS5</title>
-<style>
 
+<style>
 *{
 margin:0;
 padding:0;
@@ -13,11 +13,10 @@ box-sizing:border-box;
 }
 
 body{
-background:black;
-color:white;
+background:#000;
+height:500vh;
 font-family:Arial, sans-serif;
 overflow-x:hidden;
-height:400vh; /* Uzun scroll alanı */
 }
 
 .video-container{
@@ -40,19 +39,30 @@ object-fit:cover;
 position:fixed;
 top:50%;
 left:50%;
-transform:translate(-50%, -50%);
+transform:translate(-50%,-50%);
+color:white;
 text-align:center;
-z-index:10;
+transition:opacity 0.5s ease;
 }
 
 .overlay h1{
 font-size:4rem;
-letter-spacing:3px;
+letter-spacing:4px;
 }
 
 .overlay p{
 margin-top:20px;
+font-size:1.2rem;
 opacity:0.8;
+}
+
+.section{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+font-size:2rem;
 }
 
 </style>
@@ -60,30 +70,46 @@ opacity:0.8;
 <body>
 
 <div class="video-container">
-<video id="bgVideo" preload="auto" muted playsinline>
-<source src="your-video.mp4" type="video/mp4">
+<video id="video" muted playsinline preload="auto">
+<source src="video.mp4" type="video/mp4">
 </video>
 </div>
 
-<div class="overlay">
+<div class="overlay" id="overlay">
 <h1>UMUT STUDIO</h1>
-<p>Scroll to experience PS5 power</p>
+<p>Next-Gen PS5 Experience</p>
 </div>
+
+<div class="section">Cinematic Gameplay</div>
+<div class="section">DualSense Innovation</div>
+<div class="section">Ultra Fast Loading</div>
+<div class="section">Coming Soon</div>
 
 <script>
 
-const video = document.getElementById("bgVideo");
+const video = document.getElementById("video");
+const overlay = document.getElementById("overlay");
 
 video.addEventListener("loadedmetadata", () => {
+
 const scrollHeight = document.body.scrollHeight - window.innerHeight;
 
 window.addEventListener("scroll", () => {
-const scrollTop = window.scrollY;
-const scrollFraction = scrollTop / scrollHeight;
-const videoDuration = video.duration;
 
-video.currentTime = videoDuration * scrollFraction;
+const scrollPosition = window.scrollY;
+const scrollFraction = scrollPosition / scrollHeight;
+
+video.currentTime = video.duration * scrollFraction;
+
+/* Fade out title after scroll */
+if(scrollPosition > window.innerHeight * 0.5){
+overlay.style.opacity = "0";
+}else{
+overlay.style.opacity = "1";
+}
+
 });
+
 });
 
 </script>

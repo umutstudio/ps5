@@ -3,29 +3,61 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ana Sayfa</title>
+<title>Hoş Geldiniz</title>
 
 <style>
 body{
 margin:0;
-font-family:Arial, sans-serif;
-background:#0a0f1c;
-color:white;
+height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-height:100vh;
+background:linear-gradient(135deg,#000814,#001d3d);
+color:white;
+font-family:Arial, sans-serif;
 text-align:center;
+overflow:hidden;
+}
+
+.container{
+animation:zoomIn 1.5s ease;
 }
 
 h1{
-font-size:32px;
+font-size:40px;
+letter-spacing:2px;
+}
+
+.fadeOut{
+animation:fadeOut 1s forwards;
+}
+
+@keyframes zoomIn{
+from{transform:scale(0.7); opacity:0;}
+to{transform:scale(1); opacity:1;}
+}
+
+@keyframes fadeOut{
+to{opacity:0; transform:scale(1.2);}
 }
 </style>
 </head>
 <body>
 
+<div class="container" id="content">
 <h1>Siteye Hoş Geldiniz</h1>
+</div>
+
+<script>
+setTimeout(function(){
+document.getElementById("content").classList.add("fadeOut");
+
+setTimeout(function(){
+window.location.href = "index.html";
+},1000);
+
+},3000);
+</script>
 
 </body>
 </html>

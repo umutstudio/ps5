@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yükleniyor...</title>
+
+<style>
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#0a0f1c;
+color:#ffffff;
+font-family:Arial, sans-serif;
+text-align:center;
+}
+
+.container{
+animation:fadeIn 1.5s ease;
+}
+
+h1{
+font-size:28px;
+font-weight:600;
+margin-bottom:10px;
+}
+
+p{
+font-size:20px;
+opacity:0.8;
+}
+
+@keyframes fadeIn{
+from{opacity:0;}
+to{opacity:1;}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<h1>Sizin için sitemizi hazırlıyoruz.</h1>
+<p>Lütfen Bekleyin...</p>
+</div>
+
+<script>
+setTimeout(function(){
+window.location.href = "home.html";
+}, 4000);
+</script>
+
+</body>
+</html>
